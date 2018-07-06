@@ -1,0 +1,38 @@
+DailyInsightIntent give me my daily insight
+DailyInsightIntent give me my insight
+DailyInsightIntent give me an insight
+DailyInsightIntent give me today's insight
+DailyInsightIntent what my insight is
+DailyInsightIntent what today's insight is
+DailyInsightIntent what is my insight
+
+NumberofInsightsIntent how many insights I have
+
+
+
+REFERENCE!!!! (do not use as part of the app)
+
+AddToAtListIntent add {zero to one|update_item} to my {books|tag_name} list
+AddToAtListIntent add {beauty and the beast|update_item} to my {movies|tag_name} list
+AddToAtListIntent add {learning to make sushi with mom|update_item} to my {memories|tag_name} list
+AddToAtListIntent add {headlines|update_item} to my {music|tag_name} list
+AddToAtListIntent add {going to the city and visiting brooklyn|update_item} to my {memories|tag_name} list
+AddToAtListIntent add {heart of the city|update_item} to my {music|tag_name} list
+AddToAtTagListIntent add {heart of the city|update_item} to my {music|list_name} list within {music|tag_name}
+AddToAtTagListIntent add {raji fresh beats|update_item} to my {nicknames|list_name} list within {phipsi|tag_name}
+AddToAtTagListIntent add {buying lunch at taco bell|update_item} to my {memories|list_name} list within {memories|tag_name}
+AddToAtTagListIntent add {snorkle on the great barrier reef|update_item} to my {bucket|list_name} list within {bucket list|tag_name}
+AddToAtTagListIntent add {good will hunting|update_item} to my {movies|list_name} list within {movies|tag_name}
+AddToAtTagListIntent add {buying proper fruits and vegetables for my groceries|update_item} to my {problems|list_name} list within {ideas|tag_name}
+AddToAtTagListIntent add {Do I snore app? Sleep diagnostics and give video evidence|update_item} to my {problems|list_name} list within {ideas|tag_name}
+AddToAtTagListIntent add {ulta and makeup stores|update_item} to my {likes|list_name} list within {likes|tag_name}
+AddToAtTagListIntent add {managing my passwords in a secure way|update_item} to my {problems|list_name} list within {ideas|tag_name}
+AllListsFromTagIntent what are my list are in {ideas|tag_name}
+AllListsFromTagIntent what are my list are in {books|tag_name}
+AllListsFromTagIntent what are my list are in {memories|tag_name}
+AllListsFromTagIntent what are my list are in {presents|tag_name}
+AllListsFromTagIntent what are my list are in {sports|tag_name}
+AllListsFromTagIntent what are my list are in {ideas|tag_name}
+AllListReadIntent what are my list names
+AllListReadIntent what are my lists
+AllListReadIntent what are my tags

@@ -1,0 +1,13 @@
+{
+  "intents": [
+    {
+      "intent": "DailyInsightIntent"
+    },
+    {
+      "intent": "NumberofInsightsIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
