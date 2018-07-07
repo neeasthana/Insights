@@ -46,19 +46,19 @@ def build_response(session_attributes, speechlet_response):
 # --------------- Functions that control the skill's behavior ------------------
 
 def get_welcome_response():
-    """ If we wanted to initialize the session to have some attributes we could
+    """ 
+    If we wanted to initialize the session to have some attributes we could
     add those here
     """
 
     session_attributes = create_addition_counter()
     card_title = "Welcome"
-    speech_output = "Welcome to at list. " \
-                    "Please tell me what you would like to add to a list, " \
-                    "or to read off the names of your lists"
+    speech_output = "Insights keeps track of the advice that don't want to forget 3 days later. " \
+                    "Please ask me for your daily insight"
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Please tell me what you would like to add to a list, " \
-                    "or to read off the names of your lists"
+    reprompt_text = "Please ask me for your daily insight"
+
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
@@ -66,8 +66,8 @@ def get_welcome_response():
 
 def handle_session_end_request():
     card_title = "Session Ended"
-    speech_output = "Thank you for using at list. " \
-                    "Have a nice day! "
+    speech_output = "Thank you for using Insights. " \
+                    "We'll see you tomorrow for your insight! "
     # Setting this to true ends the session and exits the skill.
     should_end_session = True
     return build_response({}, build_speechlet_response(
@@ -80,97 +80,152 @@ def create_addition_counter():
 def increment_addition_counter():
     return {"additions": 1}
 
-def add_to_list(intent, session):
-    """ Adds an item to a specified list
-    """
+# def add_to_list(intent, session):
+#     """ Adds an item to a specified list
+#     """
 
-    card_title = "Success"#intent['name']
-    session_attributes = {}
-    should_end_session = True
+#     card_title = "Success"#intent['name']
+#     session_attributes = {}
+#     should_end_session = True
 
-    if 'tag_name' in intent['slots']:
-        tag_name = intent['slots']['tag_name']['value']
+#     if 'tag_name' in intent['slots']:
+#         tag_name = intent['slots']['tag_name']['value']
 
-        if 'update_item' in intent['slots']:
+#         if 'update_item' in intent['slots']:
 
-            update_item = intent['slots']['update_item']['value']
+#             update_item = intent['slots']['update_item']['value']
 
-            list_name = tag_name
-            if 'list_name' in intent['slots']:
-                list_name = intent['slots']['list_name']['value']
+#             list_name = tag_name
+#             if 'list_name' in intent['slots']:
+#                 list_name = intent['slots']['list_name']['value']
 
-            populated_url = "http://34.201.91.109:8080/alexa"
-            post_params = {"tag_name": tag_name, "list_name": list_name, "message_body": update_item}
+#             populated_url = "http://34.201.91.109:8080/alexa"
+#             post_params = {"tag_name": tag_name, "list_name": list_name, "message_body": update_item}
          
-            # encode the parameters for Python's urllib
-            data = parse.urlencode(post_params).encode()
-            req = request.Request(populated_url)
+#             # encode the parameters for Python's urllib
+#             data = parse.urlencode(post_params).encode()
+#             req = request.Request(populated_url)
          
-            # add authentication header to request based on Account SID + Auth Token
-            # authentication = "{}:{}".format(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-            # base64string = base64.b64encode(authentication.encode('utf-8'))
-            # req.add_header("Authorization", "Basic %s" % base64string.decode('ascii'))
+#             # add authentication header to request based on Account SID + Auth Token
+#             # authentication = "{}:{}".format(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+#             # base64string = base64.b64encode(authentication.encode('utf-8'))
+#             # req.add_header("Authorization", "Basic %s" % base64string.decode('ascii'))
          
-            try:
-                # perform HTTP POST request
-                with request.urlopen(req, data) as f:
-                    print("@List returned {}".format(str(f.read().decode('utf-8'))))
-            except Exception as e:
-                # something went wrong!
-                return e
+#             try:
+#                 # perform HTTP POST request
+#                 with request.urlopen(req, data) as f:
+#                     print("@List returned {}".format(str(f.read().decode('utf-8'))))
+#             except Exception as e:
+#                 # something went wrong!
+#                 return e
 
 
-            session_attributes = increment_addition_counter()
-            speech_output = "Okay. I added that to " + \
-                            tag_name + \
-                            ". You can ask me to do another addition to a list."
-            reprompt_text = "You can ask me to do another addition to a list."
-        else:
-            speech_output = "I did not understand the item you wanted to add to " + \
-                            tag_name + \
-                            "Please try again."
-            reprompt_text = "I did not understand the item you wanted to add to " + \
-                            tag_name + \
-                            "Please try again." + \
-                            "You can tell me a tag name by saying, " + \
-                            "add to a specific tag"
-    else:
-        speech_output = "I did not understand the tag name you used. " + \
-                        "Please try again."
-        reprompt_text = "I did not understand the tag name you used. " + \
-                        "You can tell me a tag name by saying, " + \
-                        "add to a specific tag"
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
+#             session_attributes = increment_addition_counter()
+#             speech_output = "Okay. I added that to " + \
+#                             tag_name + \
+#                             ". You can ask me to do another addition to a list."
+#             reprompt_text = "You can ask me to do another addition to a list."
+#         else:
+#             speech_output = "I did not understand the item you wanted to add to " + \
+#                             tag_name + \
+#                             "Please try again."
+#             reprompt_text = "I did not understand the item you wanted to add to " + \
+#                             tag_name + \
+#                             "Please try again." + \
+#                             "You can tell me a tag name by saying, " + \
+#                             "add to a specific tag"
+#     else:
+#         speech_output = "I did not understand the tag name you used. " + \
+#                         "Please try again."
+#         reprompt_text = "I did not understand the tag name you used. " + \
+#                         "You can tell me a tag name by saying, " + \
+#                         "add to a specific tag"
+#     return build_response(session_attributes, build_speechlet_response(
+#         card_title, speech_output, reprompt_text, should_end_session))
 
 
-def get_lists_from_tag(intent, session):
+# def get_lists_from_tag(intent, session):
+#     session_attributes = {}
+#     reprompt_text = None
+
+#     if 'tag_name' in intent['slots']:
+#         tag_name = intent['slots']['tag_name']['value']
+
+#         populated_url = "http://34.201.91.109:8080/alexaListFromTag?tag_name="+tag_name
+#         # encode the parameters for Python's urllib
+#         req = request.Request(populated_url)
+#         try:
+#             # perform HTTP POST request
+#             with request.urlopen(req) as f:
+#                 response = str(f.read().decode('utf-8'))
+#                 print("@List returned {}".format(str(f.read().decode('utf-8'))))
+#                 speech_output = "The lists included in the " + tag_name + " tag are " + response
+#                 should_end_session = True
+#         except Exception as e:
+#             # something went wrong!
+#             return e
+#     else:
+#         speech_output = "I did not understand the tag name you used. " + \
+#                         "Please try again."
+#         reprompt_text = "I did not understand the tag name you used. " + \
+#                         "You can tell me a tag name by saying, " + \
+#                         "add to a specific tag"
+#         should_end_session = False
+
+
+def get_daily_insight(intent, session):
     session_attributes = {}
     reprompt_text = None
 
-    if 'tag_name' in intent['slots']:
-        tag_name = intent['slots']['tag_name']['value']
+    try:
+        # perform HTTP GET request against the backend
+        populated_url = ""
+        #credentials and security in request
 
-        populated_url = "http://34.201.91.109:8080/alexaListFromTag?tag_name="+tag_name
         # encode the parameters for Python's urllib
-        req = request.Request(populated_url)
-        try:
-            # perform HTTP POST request
-            with request.urlopen(req) as f:
-                response = str(f.read().decode('utf-8'))
-                print("@List returned {}".format(str(f.read().decode('utf-8'))))
-                speech_output = "The lists included in the " + tag_name + " tag are " + response
-                should_end_session = True
-        except Exception as e:
-            # something went wrong!
-            return e
-    else:
-        speech_output = "I did not understand the tag name you used. " + \
-                        "Please try again."
-        reprompt_text = "I did not understand the tag name you used. " + \
-                        "You can tell me a tag name by saying, " + \
-                        "add to a specific tag"
-        should_end_session = False
+        contents = urllib.request.urlopen(populated_url).read()
+
+        # req = request.Request(populated_url)
+
+        # with request.urlopen(req) as f:
+        #     response = str(f.read().decode('utf-8'))
+        #     print("@List returned {}".format(str(f.read().decode('utf-8'))))
+        #     speech_output = "The lists included in the " + tag_name + " tag are " + response
+        #     should_end_session = True
+    except Exception as e:
+        # something went wrong!
+        return e
+
+    # Setting reprompt_text to None signifies that we do not want to reprompt
+    # the user. If the user does not respond or says something that is not
+    # understood, the session will end.
+    return build_response(session_attributes, build_speechlet_response(
+        intent['name'], speech_output, reprompt_text, should_end_session))
+
+
+
+def number_of_insights(intent, session):
+    session_attributes = {}
+    reprompt_text = None
+
+    try:
+        # perform HTTP GET request against the backend
+        populated_url = ""
+        #credentials and security in request
+
+        # encode the parameters for Python's urllib
+        contents = urllib.request.urlopen(populated_url).read()
+
+        # req = request.Request(populated_url)
+
+        # with request.urlopen(req) as f:
+        #     response = str(f.read().decode('utf-8'))
+        #     print("@List returned {}".format(str(f.read().decode('utf-8'))))
+        #     speech_output = "The lists included in the " + tag_name + " tag are " + response
+        #     should_end_session = True
+    except Exception as e:
+        # something went wrong!
+        return e
 
     # Setting reprompt_text to None signifies that we do not want to reprompt
     # the user. If the user does not respond or says something that is not
@@ -209,14 +264,10 @@ def on_intent(intent_request, session):
     intent_name = intent_request['intent']['name']
 
     # Dispatch to your skill's intent handlers
-    if intent_name == "AddToAtListIntent":
+    if intent_name == "DailyInsightIntent":
         return add_to_list(intent, session)
-    elif intent_name == "AddToAtTagListIntent":
-        return add_to_list(intent, session)
-    elif intent_name == "AllListsFromTagIntent":
-        return get_lists_from_tag(intent, session)
-    elif intent_name == "WhatsMyColorIntent":
-        return get_color_from_session(intent, session)
+    elif intent_name == "NumberofInsightsIntent":
+        return number_of_insights(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
@@ -265,6 +316,7 @@ def lambda_handler(event, context):
         return on_session_ended(event['request'], event['session'])
 
 if __name__ == '__main__':
+    # Testing to be done from local machine (not lambda)
     intent = {
         "slots": {
               "tag_name" : {"value":"phipsi"},
