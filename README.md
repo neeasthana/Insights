@@ -32,6 +32,20 @@ Join us and lets live a more purposeful life.
 	- get an insight as a daily update
 	- get number of insights in the database
 
+## Stack
+
+Backend 
+	- MongoDB (document store)
+		- Schemas:
+			- Person (name, join date, email, facebook/google login)
+			- Insight (insight, source, notes, link, author, date)
+	- Framework: Django/NodeJS/Flask
+Alexa Skill
+Android App
+Website
+	- FrontEnd Framework: ?
+
+
 ## Future features
 	- suggested insights
 	- curation of insights
