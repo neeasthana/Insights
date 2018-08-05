@@ -7,6 +7,9 @@ DailyInsightIntent what today's insight is
 DailyInsightIntent what is my insight
 
 NumberofInsightsIntent how many insights do I have
+NumberofInsightsIntent what number of insights do I have
+NumberofInsightsIntent what number of insights is there
+NumberofInsightsIntent what is my number of insights
 
 
 
