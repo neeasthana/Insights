@@ -43,6 +43,10 @@ Backend
 			- Insight (insight, source, notes, link, author, date)
 	- Framework: Django/NodeJS/Flask
 Alexa Skill
+	- Intents:
+		- Add an Inisight
+		- Number of Insights
+		- Get Daily Insight
 Android App
 Website
 	- FrontEnd Framework: ?
