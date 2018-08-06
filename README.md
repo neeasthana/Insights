@@ -29,8 +29,10 @@ Join us and lets live a more purposeful life.
 	- delete an insight
 
 1. Alexa Skill
+	- allows login via facebook or google
 	- get an insight as a daily update
 	- get number of insights in the database
+	- add an insight (via a 2-multi step prompt - first the user asks to add an insight and then is prompted to say the insight. Afterwards the user may add an author or note or source)
 
 ## Stack
 
@@ -53,6 +55,7 @@ Website
 	- scheduling
 	- share an insight with a friend or on social media
 	- cool memes and text effects for advice to post to social media + to influencers
+	- affirmations
 
 ## Contact
 
