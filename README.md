@@ -42,6 +42,8 @@ Backend
 			- Person (name, join date, email, facebook/google login)
 			- Insight (insight, source, notes, link, author, date)
 	- Framework: Django/NodeJS/Flask
+		- MEAN Stack with NodeJS - https://www.mongodb.com/blog/post/building-your-first-application-mongodb-creating-rest-api-using-mean-stack-part-1
+		- Flask and using the Python connector to Mongo - https://medium.com/@peregringaret/a-different-stack-angular-flask-mongodb-780b44e10afd
 Alexa Skill
 	- Intents:
 		- Add an Inisight
